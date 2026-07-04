@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administración — Magdalena Decide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-body">
+
+<!-- LOGIN -->
+<div class="login-screen" id="login-screen">
+  <div class="login-card">
+    <h1>Magdalena Decide</h1>
+    <p>Acceso exclusivo para la administración del sitio.</p>
+    <form id="login-form">
+      <div class="field">
+        <label for="login-email">Email</label>
+        <input type="email" id="login-email" required>
+      </div>
+      <div class="field">
+        <label for="login-password">Contraseña</label>
+        <input type="password" id="login-password" required>
+      </div>
+      <p class="form-error" id="login-error" style="display:none;"></p>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Ingresar</button>
+    </form>
+  </div>
+</div>
+
+<!-- PANEL -->
+<div class="admin-shell" id="admin-shell">
+  <div class="admin-topbar">
+    <div class="admin-topbar-inner">
+      <a href="index.html" class="brand" style="color:var(--pampa);">
+        <span class="brand-mark"></span>
+        Magdalena Decide · Admin
+      </a>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div class="footer-credit-badge">
+          <img src="assets/epa-logo.png" alt="Logo de EPA">
+        </div>
+        <button class="btn btn-outline-light btn-small" id="logout-btn">Cerrar sesión</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-main">
+    <div class="stat-row" id="stat-row"></div>
+
+    <div class="admin-tabs">
+      <button class="admin-tab active" data-tab="ideas">Ideas</button>
+      <button class="admin-tab" data-tab="rondas">Rondas</button>
+    </div>
+
+    <!-- TAB IDEAS -->
+    <section class="admin-panel active" id="panel-ideas">
+      <div class="admin-card">
+        <div class="admin-grid-controls">
+          <div class="admin-field">
+            <label>Filtrar por estado</label>
+            <select id="filtro-estado">
+              <option value="todos">Todos</option>
+            </select>
+          </div>
+          <div class="admin-field">
+            <label>Filtrar por tema</label>
+            <select id="filtro-tema">
+              <option value="todos">Todos</option>
+            </select>
+          </div>
+          <div class="admin-field">
+            <label>Filtrar por localidad</label>
+            <select id="filtro-localidad">
+              <option value="todos">Todos</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div id="ideas-list"><p class="empty-note">Cargando ideas…</p></div>
+    </section>
+
+    <!-- TAB RONDAS -->
+    <section class="admin-panel" id="panel-rondas">
+      <div class="admin-card">
+        <h3>Crear nueva ronda</h3>
+        <div class="admin-grid-controls">
+          <div class="admin-field">
+            <label for="ronda-nombre">Nombre</label>
+            <input type="text" id="ronda-nombre" placeholder="Ej: 2026 · Segundo semestre">
+          </div>
+          <div class="admin-field">
+            <label for="ronda-apertura">Apertura de carga</label>
+            <input type="date" id="ronda-apertura">
+          </div>
+          <div class="admin-field">
+            <label for="ronda-cierre">Cierre de carga</label>
+            <input type="date" id="ronda-cierre">
+          </div>
+        </div>
+        <div class="save-row" style="justify-content:space-between;align-items:center;">
+          <label style="display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:0.82rem;color:var(--muted);">
+            <input type="checkbox" id="ronda-activa-check" checked>
+            Marcar como ronda activa
+          </label>
+          <button class="btn btn-primary btn-small" id="crear-ronda-btn">Crear ronda</button>
+        </div>
+        <p class="save-status" id="ronda-status"></p>
+      </div>
+
+      <div id="rondas-list"><p class="empty-note">Cargando rondas…</p></div>
+    </section>
+  </div>
+</div>
+
+<script type="module" src="admin.js"></script>
+</body>
+</html>
